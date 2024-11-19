@@ -1,66 +1,146 @@
+/* yellow = #F7F21A */
+/* yellos = #F1EF88 */
+
+<!--EB Garamond-->
+<!--Trebuchet MS-->
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="MobileOptimized" content="176" />
-        <meta name="HandheldFriendly" content="True" />
-        <meta name="robots" content="noindex,nofollow" />
-        <script src="https://telegram.org/js/telegram-web-app.js?2"></script>
-        <style>
-            * {
-              box-sizing: border-box;
-            }
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta name="MobileOptimized" content="176" />
+            <meta name="HandheldFriendly" content="True" />
+            <meta name="robots" content="noindex,nofollow" />
+            <script src="https://telegram.org/js/telegram-web-app.js?2"></script>
+            <style>
+                * {
+                    box-sizing: border-box;
+                }
 
-            body {
-              font-family: Arial;
-              background: black;
-            }
+                body {
+                    background: black;
+                }
 
-            .navbar {
-                background-color: #000000;
-                overflow: hidden;
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                width: 100%;
-                float: center;
-            }
+                .navbar {
+                    background-color: #000000;
+                    overflow: hidden;
+                    position: fixed;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    width: 100%;
+                    float: center;
+                }
 
-            /* Style the links inside the navigation bar */
-            .navbar a {
-                float: left;
-                display: block;
-                color: #F7F21A;
-                text-align: center;
-                padding: 14px 16px;
-                text-decoration: none;
-                font-size: 18px;
-            }
+                /* Style the links inside the navigation bar */
+                .navbar a {
+                    float: left;
+                    display: block;
+                    color: #F7F21A;
+                    text-align: center;
+                    padding: 14px 16px;
+                    text-decoration: none;
+                    font-size: 18px;
+                }
 
-            /* Change the color of links on hover */
-            .navbar a:hover {
-                background-color: white;
-                color: black;
-            }
+                .navbar a.active {
+                  background-color: black;
+                  color: yellow;
+                }
 
-            .container {
-                background-color: black;
-                width: 100%;
-                height: 100%;
-            }
-            
-            .navbar a.active {
-              background-color: white;
-              color: black;
-            }
+                .container {
+                    background-color: black;
+                    width: 100%;
+                    height: 100%;
+                }
 
-        </style>
+                .navbar a.active {
+                    background-color: white;
+                    color: black;
+                }
+
+                .profile-card {
+                    border: 1px solid #F7F21A;
+                    position: fixed;
+                    top: 20;
+                    left: 40;
+                    right: 40;
+                    height: 80%;
+                    float: center;
+                    border-radius: 10%;
+                }
+
+                @-webkit-keyframes glow {
+                    from {
+                        text-shadow: 0 0 10px #FEF801, 0 0 20px #FEF801, 0 0 30px #F6F11E, 0 0 40px #F6F11E, 0 0 50px #F6F11E;
+                    }
+                    to {
+                        text-shadow: 0 0 20px #fff, 0 0 30px #F0ED75, 0 0 40px #F0ED75, 0 0 50px #F0ED75;
+                    }
+                }
+
+                .profile-card-nickname {
+                    padding: 30;
+                    font-size: 20px;
+                    color: #fff;
+                    text-align: center;
+                    -webkit-animation: glow 3s ease-in-out infinite alternate;
+                    -moz-animation: glow 3s ease-in-out infinite alternate;
+                    animation: glow 3s ease-in-out infinite alternate;
+                    font-family: 'Trebuchet MS', sans-serif;
+                }
+
+                .profile-card-image {
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+                    width: 50%;
+                    background-color: black;
+                    color: white;
+                    padding: 20;
+                }
+
+                .profile-card-country {
+                    text-align: center;
+                    color: yellow;
+                    padding: 10;
+                    font-family: 'Trebuchet MS', sans-serif;
+                }
+
+                .profile-card-description {
+                    text-align: center;
+                    color: white;
+                    padding: 10;
+                    font-family: 'Trebuchet MS', sans-serif;
+                }
+
+                .main-title {
+                    text-align: center;
+                    color: yellow;
+                    padding: 20;
+                    font-family: 'Trebuchet MS', sans-serif;
+                }
+            </style>
     </head>
     <body>
         <div class="container">
+            <div class="profile-card">
+                <div class="main-title">
+                    HOME
+                </div>
+                <img src="paris.jpg" class="profile-card-image">
+                <div class="profile-card-nickname">
+                    @nickname
+                </div>
+                <div class="profile-card-country">
+                    Country
+                </div>
+                <div class="profile-card-description">
+                    Description description description description description description description description description description description description description description description description
+                </div>
+            </div>
             <div class="navbar" id="myNavbar">
                 <a href="https://rurasogoodo.github.io/tests/web-app-test">Home</a>
                 <a href="https://rurasogoodo.github.io/tests/other-home">Home-2</a>
