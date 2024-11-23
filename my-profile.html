@@ -134,6 +134,12 @@
                     font-size: 24px;
                     color: white;
                 }
+
+                #btn_status {
+                    font-size: 24px;
+                    color: white;
+                    padding: 30;
+                }
             </style>
     </head>
     <body>
@@ -145,7 +151,12 @@
                 <div>
                     Platform: <span class="info" id="platform">platform</span>
                 </div>
-                <button onclick="DemoApp.close(this);">Close</button>
+                <div>
+                    <button onclick="DemoApp.close(this);">Close</button>
+                </div>
+                <div>
+                    <button onclick="DemoApp.showAlert('ALERT');">Show alert</button>
+                </div>
                 <div id="btn_status" style="display: none;"></div>
                 <pre><code id="webview_data"></code></pre>
             </div>
