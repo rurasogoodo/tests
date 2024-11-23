@@ -162,7 +162,11 @@
                 </div>
 
                 <div>
-                    <button onclick="DemoApp.sendMessage('L__________________OOO_________OOL');">Send data</button>
+                    <button onclick="DemoApp.sendMessage('L__________________OOO_________OOL');">Send message using backend API</button>
+                </div>
+
+                <div>
+                    <button onclick="DemoApp.sendText('L__________________OOO_________OOL');">Send data via TG mini app</button>
                 </div>
 
                 <div id="btn_status" style="display: none;"></div>
@@ -193,7 +197,7 @@
                     init(options) {
                         document.body.style.visibility = ''
                         Telegram.WebApp.ready()
-                        Telegram.WebApp.disableVerticalSwipes()
+                        Telegram.WebApp.expand()
 
                         /*Telegram.WebApp.MainButton.setParams({
                             text      : 'CLOSE WEBVIEW',
@@ -271,7 +275,7 @@
                      }
                      },*/
                     sendText(spam) {
-                        const textField = document.querySelector('#text_field');
+                        /*const textField = document.querySelector('#text_field');
                         const text      = textField.value;
                         if (!text.length) {
                             return textField.focus();
@@ -283,7 +287,8 @@
                         const repeat = spam ? 10 : 1;
                         for (let i = 0; i < repeat; i++) {
                             Telegram.WebApp.sendData(text);
-                        }
+                        }*/
+                        Telegram.WebApp.sendData(spam);
                     },
 
                     showAlert(message) {
@@ -319,39 +324,6 @@
                         }).catch(function (error) {
                             onCallback && onCallback({error: 'Server error'});
                         });
-                    }
-                }
-
-                const DemoAppMenu = {
-                    init() {
-                        DemoApp.init();
-                        document.body.classList.add('gray');
-                        Telegram.WebApp.setHeaderColor('secondary_bg_color');
-                    }
-                };
-
-                const DemoAppInitData = {
-                    init() {
-                        DemoApp.init();
-                        Telegram.WebApp.onEvent('themeChanged', function () {
-                            document.getElementById('theme_data').innerHTML = JSON.stringify(Telegram.WebApp.themeParams, null, 2);
-                        });
-                        document.getElementById('webview_data').innerHTML = JSON.stringify(DemoApp.initDataUnsafe, null, 2);
-                        document.getElementById('theme_data').innerHTML   = JSON.stringify(Telegram.WebApp.themeParams, null, 2);
-                        /*DemoApp.checkInitData();*/
-                    }
-                };
-
-                const DemoAppViewport = {
-                    init() {
-                        DemoApp.init();
-                        Telegram.WebApp.onEvent('viewportChanged', DemoAppViewport.setData);
-                        DemoAppViewport.setData();
-                    },
-                    setData() {
-                        document.querySelector('.viewport-border').setAttribute('text', window.innerWidth + ' x ' + round(Telegram.WebApp.viewportHeight, 2))
-                        document.querySelector('.viewport-stable_border').setAttribute('text', window.innerWidth + ' x ' + round(Telegram.WebApp.viewportStableHeight, 2) +
-                                                                                       ' | is_expanded: ' + (Telegram.WebApp.isExpanded ? 'true' : 'false'));
                     }
                 }
 
