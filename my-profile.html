@@ -148,15 +148,23 @@
                 <div>
                     Version: <span class="info" id="ver">version</span>
                 </div>
+
                 <div>
                     Platform: <span class="info" id="platform">platform</span>
                 </div>
+
                 <div>
                     <button onclick="DemoApp.close(this);">Close</button>
                 </div>
+
                 <div>
                     <button onclick="DemoApp.showAlert('ALERT');">Show alert</button>
                 </div>
+
+                <div>
+                    <button onclick="DemoApp.sendMessage('LOOOOOL');">Send data</button>
+                </div>
+
                 <div id="btn_status" style="display: none;"></div>
                 <pre><code id="webview_data"></code></pre>
             </div>
@@ -185,7 +193,9 @@
                     init(options) {
                         document.body.style.visibility = ''
                         Telegram.WebApp.ready()
-                        Telegram.WebApp.MainButton.setParams({
+                        Telegram.WebApp.disableVerticalSwipes()
+                        Telegram.WebApp.requestFullscreen()
+                        /*Telegram.WebApp.MainButton.setParams({
                             text      : 'CLOSE WEBVIEW',
                             is_visible: true
                         }).onClick(DemoApp.close)
@@ -194,7 +204,7 @@
                         })
                         Telegram.WebApp.SettingsButton.onClick(function() {
                             DemoApp.showAlert('Settings opened!')
-                        })
+                        })*/
                     },
                     close() {
                         Telegram.WebApp.close();
@@ -203,7 +213,7 @@
                     // actions
                     sendMessage(msg_id, with_webview) {
                         if (!DemoApp.initDataUnsafe.query_id) {
-                            alert('WebViewQueryId not defined');
+                            showAlert('WebViewQueryId not defined');
                             return;
                         }
 
@@ -243,23 +253,23 @@
                         });
                     },
                     /*checkInitData() {
-                        const webViewStatus = document.querySelector('#webview_data_status');
-                        if (DemoApp.initDataUnsafe.query_id &&
-                            DemoApp.initData &&
-                            webViewStatus.classList.contains('status_need')
-                            ) {
-                            webViewStatus.classList.remove('status_need');
-                            DemoApp.apiRequest('checkInitData', {}, function (result) {
-                                if (result.ok) {
-                                    webViewStatus.textContent = 'Hash is correct (async)';
-                                    webViewStatus.className   = 'ok';
-                                } else {
-                                    webViewStatus.textContent = result.error + ' (async)';
-                                    webViewStatus.className   = 'err';
-                                }
-                            });
-                        }
-                    },*/
+                     const webViewStatus = document.querySelector('#webview_data_status');
+                     if (DemoApp.initDataUnsafe.query_id &&
+                     DemoApp.initData &&
+                     webViewStatus.classList.contains('status_need')
+                     ) {
+                     webViewStatus.classList.remove('status_need');
+                     DemoApp.apiRequest('checkInitData', {}, function (result) {
+                     if (result.ok) {
+                     webViewStatus.textContent = 'Hash is correct (async)';
+                     webViewStatus.className   = 'ok';
+                     } else {
+                     webViewStatus.textContent = result.error + ' (async)';
+                     webViewStatus.className   = 'err';
+                     }
+                     });
+                     }
+                     },*/
                     sendText(spam) {
                         const textField = document.querySelector('#text_field');
                         const text      = textField.value;
