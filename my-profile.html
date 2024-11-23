@@ -221,37 +221,37 @@
                             return;
                         }
 
-                        document.querySelectorAll('button').forEach((btn) => btn.disabled = true);
+                        /*document.querySelectorAll('button').forEach((btn) => btn.disabled = true);*/
 
-                        const btn       = document.querySelector('#btn_status');
-                        btn.textContent = 'Sending...';
+                        /*const btn       = document.querySelector('#btn_status');
+                        btn.textContent = 'Sending...';*/
 
                         DemoApp.apiRequest('sendMessage', {
                             msg_id      : msg_id || '',
-                            with_webview: !DemoApp.initDataUnsafe.receiver && with_webview ? 1 : 0
                         }, function (result) {
-                            document.querySelectorAll('button').forEach((btn) => btn.disabled = false);
+                            /*document.querySelectorAll('button').forEach((btn) => btn.disabled = false);*/
 
                             if (result.response) {
                                 if (result.response.ok) {
-                                    btn.textContent   = 'Message sent successfully!';
+                                    /*btn.textContent   = 'Message sent successfully!';
                                     btn.className     = 'ok';
-                                    btn.style.display = 'block';
+                                    btn.style.display = 'block';*/
+                                    alert('API request done - result.response.ok');
                                 } else {
-                                    btn.textContent   = result.response.description;
+                                    /*btn.textContent   = result.response.description;
                                     btn.className     = 'err';
-                                    btn.style.display = 'block';
+                                    btn.style.display = 'block';*/
                                     alert(result.response.description);
                                 }
                             } else if (result.error) {
-                                btn.textContent   = result.error;
+                                /*btn.textContent   = result.error;
                                 btn.className     = 'err';
-                                btn.style.display = 'block';
+                                btn.style.display = 'block';*/
                                 alert(result.error);
                             } else {
-                                btn.textContent   = 'Unknown error';
+                                /*btn.textContent   = 'Unknown error';
                                 btn.className     = 'err';
-                                btn.style.display = 'block';
+                                btn.style.display = 'block';*/
                                 alert('Unknown error');
                             }
                         });
