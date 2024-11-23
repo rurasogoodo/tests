@@ -140,6 +140,8 @@
                 <div>
                     Platform: <span class="info" id="platform">platform</span>
                 </div>
+                <button onclick="DemoApp.close(this);">Close</button>
+                <div id="btn_status" style="display: none;"></div>
             </div>
             <div class="navbar" id="myNavbar">
                 <a href="https://rurasogoodo.github.io/tests/web-app-test">Home</a>
@@ -223,45 +225,7 @@
                             }
                         });
                     },
-                    changeMenuButton(close) {
-                        document.querySelectorAll('button').forEach((btn) => btn.disabled = true);
-                        const btnStatus       = document.querySelector('#btn_status');
-                        btnStatus.textContent = 'Changing button...';
-
-                        DemoApp.apiRequest('changeMenuButton', {}, function (result) {
-                            document.querySelectorAll('button').forEach((btn) => btn.disabled = false);
-
-                            if (result.response) {
-                                if (result.response.ok) {
-                                    btnStatus.textContent   = 'Button changed!';
-                                    btnStatus.className     = 'ok';
-                                    btnStatus.style.display = 'block';
-                                    Telegram.WebApp.close();
-                                } else {
-                                    btnStatus.textContent   = result.response.description;
-                                    btnStatus.className     = 'err';
-                                    btnStatus.style.display = 'block';
-                                    alert(result.response.description);
-                                }
-                            } else if (result.error) {
-                                btnStatus.textContent   = result.error;
-                                btnStatus.className     = 'err';
-                                btnStatus.style.display = 'block';
-                                alert(result.error);
-                            } else {
-                                btnStatus.textContent   = 'Unknown error';
-                                btnStatus.className     = 'err';
-                                btnStatus.style.display = 'block';
-                                alert('Unknown error');
-                            }
-                        });
-                        if (close) {
-                            setTimeout(function () {
-                                Telegram.WebApp.close();
-                            }, 50);
-                        }
-                    },
-                    checkInitData() {
+                    /*checkInitData() {
                         const webViewStatus = document.querySelector('#webview_data_status');
                         if (DemoApp.initDataUnsafe.query_id &&
                             DemoApp.initData &&
@@ -278,7 +242,7 @@
                                 }
                             });
                         }
-                    },
+                    },*/
                     sendText(spam) {
                         const textField = document.querySelector('#text_field');
                         const text      = textField.value;
@@ -293,6 +257,13 @@
                         for (let i = 0; i < repeat; i++) {
                             Telegram.WebApp.sendData(text);
                         }
+                    },
+
+                    showAlert(message) {
+                        Telegram.WebApp.showAlert(message);
+                    },
+                    showConfirm(message) {
+                        Telegram.WebApp.showConfirm(message);
                     },
 
                     // Other
@@ -339,7 +310,7 @@
                         });
                         document.getElementById('webview_data').innerHTML = JSON.stringify(DemoApp.initDataUnsafe, null, 2);
                         document.getElementById('theme_data').innerHTML   = JSON.stringify(Telegram.WebApp.themeParams, null, 2);
-                        DemoApp.checkInitData();
+                        /*DemoApp.checkInitData();*/
                     }
                 };
 
@@ -430,7 +401,7 @@
                     }
                 }
 
-                DemoApp.checkInitData();
+                /*DemoApp.checkInitData();*/
                 DemoApp.init();
 
                 function setViewportData() {
