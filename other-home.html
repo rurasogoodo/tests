@@ -1,1 +1,143 @@
+/* yellow = #F7F21A */
+/* yellos = #F1EF88 */
 
+<!--EB Garamond-->
+<!--Trebuchet MS-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta name="MobileOptimized" content="176" />
+            <meta name="HandheldFriendly" content="True" />
+            <meta name="robots" content="noindex,nofollow" />
+            <script src="https://telegram.org/js/telegram-web-app.js?2"></script>
+            <style>
+                * {
+                    box-sizing: border-box;
+                }
+
+                body {
+                    background: black;
+                }
+
+                .navbar {
+                    background-color: #000000;
+                    overflow: hidden;
+                    position: fixed;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    width: 100%;
+                    float: center;
+                }
+
+                /* Style the links inside the navigation bar */
+                .navbar a {
+                    float: left;
+                    display: block;
+                    color: #F7F21A;
+                    text-align: center;
+                    padding: 14px 16px;
+                    text-decoration: none;
+                    font-size: 18px;
+                }
+
+                .navbar a.active {
+                    background-color: black;
+                    color: yellow;
+                }
+
+                .container {
+                    background-color: black;
+                    width: 100%;
+                    height: 100%;
+                    padding: 22;
+                }
+
+                .navbar a.active {
+                    background-color: white;
+                    color: black;
+                }
+
+                /* container */
+                .two-columns-grid {
+                    display: grid;grid-gap: 2em;
+                    grid-gap: 1em;
+                    grid-template-columns: 1fr 1fr;
+                }
+
+                /* columns */
+                .two-columns-grid > * {
+<!--                    padding: 0.5rem;-->
+                    color: white;
+                    border: 1px solid white;
+                }
+
+                .profile-card {
+                    border: 1px solid #F7F21A;
+                    padding: 10;
+                    border-radius: 3%;
+                }
+
+                .profile-card-image {
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+                    width: 80%;
+                    background-color: black;
+                    color: white;
+                    padding: 10;
+                }
+
+                @-webkit-keyframes glow {
+                    from {
+                        text-shadow: 0 0 10px #FEF801, 0 0 20px #FEF801, 0 0 30px #F6F11E, 0 0 40px #F6F11E;
+                    }
+                    to {
+                        text-shadow: 0 0 20px #fff, 0 0 30px #F0ED75, 0 0 40px #F0ED75;
+                    }
+                }
+
+                .profile-card-title {
+                    text-align: center;
+                    color: white;
+                    padding: 5;
+                    font-family: 'Trebuchet MS', sans-serif;
+                    -webkit-animation: glow 3s ease-in-out infinite alternate;
+                    -moz-animation: glow 3s ease-in-out infinite alternate;
+                    animation: glow 3s ease-in-out infinite alternate;
+                }
+
+                .profile-card-description {
+                    text-align: center;
+                    color: yellow;
+                    padding: 5;
+                    font-family: 'Trebuchet MS', sans-serif;
+                }
+
+            </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="two-columns-grid">
+                #for(post in posts):
+                <div class="profile-card">
+                    <img src="paris.jpg" class="profile-card-image">
+                    <p class="profile-card-title">#(post.name)</p>
+                    <p class="profile-card-description">home</p>
+                </div>
+                #endfor
+            </div>
+
+            <div class="navbar" id="myNavbar">
+                <a href="https://rurasogoodo.github.io/tests/web-app-test">Home</a>
+                <a href="https://rurasogoodo.github.io/tests/other-home">Home-2</a>
+                <a href="https://rurasogoodo.github.io/tests/other-home-2">Home-3</a>
+                <a href="https://rurasogoodo.github.io/tests/my-profile">Profile</a>
+            </div>
+        </div>
+    </body>
+</html>
