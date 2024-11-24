@@ -199,7 +199,7 @@
 
                 const DemoApp = {
                     initData      : Telegram.WebApp.initData || '',
-                    initDataUnsafe: Telegram.WebApp.initDataUnsafe || {},
+                    initDataUnsafe: Telegram.WebApp.initDataUnsafe || { no_data: 'no data'},
                     MainButton: Telegram.WebApp.MainButton,
                     BackButton: Telegram.WebApp.BackButton,
                     SettingsButton: Telegram.WebApp.SettingsButton,
@@ -318,7 +318,7 @@
                             method     : 'POST',
                             body       : JSON.stringify(Object.assign(data, {
                                 /*_auth : authData,*/
-                                message: data
+                                message: 'data from bot via API'
                                 /*method: method,*/
                             })),
                             credentials: 'include',
@@ -374,7 +374,7 @@
                     document.getElementById('main_btn').style.display = 'block';
                 }
                 document.getElementById('with_webview_btn').style.display = !!DemoApp.initDataUnsafe.query_id && !DemoApp.initDataUnsafe.receiver ? 'block' : 'none';*/
-                document.getElementById('webview_data').innerHTML         = JSON.stringify(DemoApp.initDataUnsafe, null, 2);
+                document.getElementById('webview_data').innerHTML = JSON.stringify(DemoApp.initDataUnsafe, null, 2);
 
                 /*document.getElementById('theme_data').innerHTML = JSON.stringify(Telegram.WebApp.themeParams, null, 2);
                 document.getElementById('regular_link').setAttribute('href', document.getElementById('regular_link').getAttribute('href') + location.hash);
@@ -388,7 +388,7 @@
                     }
                 }); */
 
-                document.getElementById('ver').innerHTML      = Telegram.WebApp.version;
+                document.getElementById('ver').innerHTML = Telegram.WebApp.version;
                 document.getElementById('platform').innerHTML = Telegram.WebApp.platform;
                 
                 /*
