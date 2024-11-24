@@ -234,7 +234,7 @@
 
                     checkInitData() {
                         const loading = document.querySelector('#init_data');
-                        loading.textContent = DemoApp.initDataUnsafe || 'no init data';
+                        loading.textContent = JSON.stringify(DemoApp) || 'no init data';
                     },
 
                     // actions
