@@ -144,7 +144,6 @@
                 .loading-text {
                     color: white;
                     padding: 30;
-                    display: none;
                 }
             </style>
     </head>
@@ -175,10 +174,9 @@
                     <button onclick="DemoApp.sendText('L______________OOO_________OOL');">Send data via TG mini app</button>
                 </div>
 
-                <div class="loading-text">
-                    Loading text
+                <div>
+                    Loading API status: <span id="loading" class="loading-text">Loading text</span>
                 </div>
-
 
                 <div id="btn_status" style="display: none;"></div>
                 <pre><code id="webview_data"></code></pre>
@@ -235,6 +233,9 @@
 
                         /*document.querySelectorAll('button').forEach((btn) => btn.disabled = true);*/
 
+                        const loading = document.querySelector('#loading');
+                        loading.textContent = `LOADING`;
+
                         /*const btn       = document.querySelector('#btn_status');
                         btn.textContent = 'Sending...';*/
 
@@ -242,29 +243,29 @@
                             msg_id      : msg_id || ''
                         }, function (result) {
                             /*document.querySelectorAll('button').forEach((btn) => btn.disabled = false);*/
-
+                            loading.textContent = `NOW WE HAVE API RESULT`;
                             if (result.response) {
                                 if (result.response.ok) {
                                     /*btn.textContent   = 'Message sent successfully!';
                                     btn.className     = 'ok';
                                     btn.style.display = 'block';*/
-                                    alert('API request done - result.response.ok');
+                                    showAlert('API request done - result.response.ok');
                                 } else {
                                     /*btn.textContent   = result.response.description;
                                     btn.className     = 'err';
                                     btn.style.display = 'block';*/
-                                    alert(result.response.description);
+                                    showAlert(result.response.description);
                                 }
                             } else if (result.error) {
                                 /*btn.textContent   = result.error;
                                 btn.className     = 'err';
                                 btn.style.display = 'block';*/
-                                alert(result.error);
+                                showAlert(result.error);
                             } else {
                                 /*btn.textContent   = 'Unknown error';
                                 btn.className     = 'err';
                                 btn.style.display = 'block';*/
-                                alert('Unknown error');
+                                showAlert('Unknown error');
                             }
                         });
                     },
@@ -293,7 +294,7 @@
                             return textField.focus();
                         }
                         if (byteLength(text) > 4096) {
-                            return alert('Text is too long');
+                            return showAlert('Text is too long');
                         }
 
                         const repeat = spam ? 10 : 1;
