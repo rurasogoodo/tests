@@ -249,22 +249,26 @@
                                     /*btn.textContent   = 'Message sent successfully!';
                                     btn.className     = 'ok';
                                     btn.style.display = 'block';*/
+                                    loading.textContent = `result.response.ok`;
                                     showAlert('API request done - result.response.ok');
                                 } else {
                                     /*btn.textContent   = result.response.description;
                                     btn.className     = 'err';
                                     btn.style.display = 'block';*/
+                                    loading.textContent = `response is not ok`;
                                     showAlert(result.response.description);
                                 }
                             } else if (result.error) {
                                 /*btn.textContent   = result.error;
                                 btn.className     = 'err';
                                 btn.style.display = 'block';*/
+                                loading.textContent = 'response error';
                                 showAlert(result.error);
                             } else {
                                 /*btn.textContent   = 'Unknown error';
                                 btn.className     = 'err';
                                 btn.style.display = 'block';*/
+                                loading.textContent = 'Unknown error';
                                 showAlert('Unknown error');
                             }
                         });
@@ -366,6 +370,8 @@
             </script>
 
             <script type="application/javascript">
+                DemoApp.init();
+
                 /*
                  * This part of code is used to initialize the demo app and set up the event handlers we need.
                  */
@@ -410,9 +416,6 @@
                     }
                 }
                  */
-
-                /*DemoApp.checkInitData();*/
-                DemoApp.init();
 
                 /*
                 function setViewportData() {
