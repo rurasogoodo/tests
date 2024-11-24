@@ -178,6 +178,14 @@
                     Loading API status: <span id="loading" class="loading-text">Loading text</span>
                 </div>
 
+                <div>
+                    <button onclick="DemoApp.checkInitData(this);">Check App init data</button>
+                </div>
+
+                <div>
+                    Init Data: <span id="init_data" class="loading-text">----</span>
+                </div>
+
                 <div id="btn_status" style="display: none;"></div>
                 <pre><code id="webview_data"></code></pre>
 
@@ -205,9 +213,9 @@
                     SettingsButton: Telegram.WebApp.SettingsButton,
 
                     init(options) {
-                        document.body.style.visibility = ''
+                        /*document.body.style.visibility = ''*/
                         Telegram.WebApp.ready()
-                        Telegram.WebApp.expand()
+                        /*Telegram.WebApp.expand()*/
 
                         /*Telegram.WebApp.MainButton.setParams({
                             text      : 'CLOSE WEBVIEW',
@@ -222,6 +230,11 @@
                     },
                     close() {
                         Telegram.WebApp.close();
+                    },
+
+                    checkInitData() {
+                        const loading = document.querySelector('#init_data');
+                        loading.textContent = DemoApp.initDataUnsafe || 'no init data';
                     },
 
                     // actions
@@ -262,7 +275,7 @@
                                 /*btn.textContent   = result.error;
                                 btn.className     = 'err';
                                 btn.style.display = 'block';*/
-                                loading.textContent = 'response error';
+                                loading.textContent = result.error;
                                 showAlert(result.error);
                             } else {
                                 /*btn.textContent   = 'Unknown error';
@@ -381,6 +394,7 @@
                 }
                 document.getElementById('with_webview_btn').style.display = !!DemoApp.initDataUnsafe.query_id && !DemoApp.initDataUnsafe.receiver ? 'block' : 'none';*/
                 document.getElementById('webview_data').innerHTML = JSON.stringify(DemoApp.initDataUnsafe, null, 2);
+                document.getElementById('webview_data').innerHTML = JSON.stringify(Telegram.WebApp.initDataUnsafe, null, 2);
 
                 /*document.getElementById('theme_data').innerHTML = JSON.stringify(Telegram.WebApp.themeParams, null, 2);
                 document.getElementById('regular_link').setAttribute('href', document.getElementById('regular_link').getAttribute('href') + location.hash);
