@@ -257,7 +257,7 @@
                         }, function (result) {
                             /*document.querySelectorAll('button').forEach((btn) => btn.disabled = false);*/
                             loading.textContent = `NOW WE HAVE API RESULT`;
-                            loading.textContent = result.response;
+
                             if (result.response) {
                                 if (result.response.ok) {
                                     /*btn.textContent   = 'Message sent successfully!';
@@ -334,11 +334,11 @@
                         const authData = DemoApp.initData || '';
                         fetch('https://randm.pro/send-text-to-bot', {
                             method     : 'POST',
-                            body       : JSON.stringify(Object.assign(data, {
-                                /*_auth : authData,*/
-                                message: 'data from bot via API',
-                                method: method
-                            })),
+                            body: JSON.stringify({
+                                userId: 1,
+                                title: "Fix my bugs",
+                                info: "data"
+                            }),
                             credentials: 'include',
                             headers    : {
                                 'Content-Type': 'application/json'
