@@ -275,7 +275,7 @@
                                 /*btn.textContent   = result.error;
                                 btn.className     = 'err';
                                 btn.style.display = 'block';*/
-                                loading.textContent = result.error;
+                                loading.textContent = result.response.description + ' ' + result.error;
                                 showAlert(result.error);
                             } else {
                                 /*btn.textContent   = 'Unknown error';
@@ -380,6 +380,13 @@
                     const k = Math.pow(10, d || 0);
                     return Math.round(val * k) / k;
                 }
+
+                const DemoAppInitData = {
+                    init() {
+                        DemoApp.init();
+                        document.getElementById('webview_data').innerHTML = JSON.stringify(DemoApp.initDataUnsafe, null, 2);
+                    }
+                };
             </script>
 
             <script type="application/javascript">
