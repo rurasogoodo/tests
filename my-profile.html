@@ -126,7 +126,7 @@
                 }
 
                 .info {
-                    color: white;
+                    color: yellow;
                     padding: 10;
                 }
 
@@ -139,6 +139,12 @@
                     font-size: 24px;
                     color: white;
                     padding: 30;
+                }
+
+                .loading-text {
+                    color: white;
+                    padding: 30;
+                    display: none;
                 }
             </style>
     </head>
@@ -162,15 +168,21 @@
                 </div>
 
                 <div>
-                    <button onclick="DemoApp.sendMessage('L__________________OOO_________OOL');">Send message using backend API</button>
+                    <button onclick="DemoApp.sendMessage('L_____________OOO_________OOL');">Send message using backend API</button>
                 </div>
 
                 <div>
-                    <button onclick="DemoApp.sendText('L__________________OOO_________OOL');">Send data via TG mini app</button>
+                    <button onclick="DemoApp.sendText('L______________OOO_________OOL');">Send data via TG mini app</button>
                 </div>
+
+                <div class="loading-text">
+                    Loading text
+                </div>
+
 
                 <div id="btn_status" style="display: none;"></div>
                 <pre><code id="webview_data"></code></pre>
+
             </div>
             <div class="navbar" id="myNavbar">
                 <a href="https://rurasogoodo.github.io/tests/web-app-test">Home</a>
@@ -227,7 +239,7 @@
                         btn.textContent = 'Sending...';*/
 
                         DemoApp.apiRequest('sendMessage', {
-                            msg_id      : msg_id || '',
+                            msg_id      : msg_id || ''
                         }, function (result) {
                             /*document.querySelectorAll('button').forEach((btn) => btn.disabled = false);*/
 
@@ -311,7 +323,7 @@
                             body       : JSON.stringify(Object.assign(data, {
                                 /*_auth : authData,*/
                                 message: data,
-                                method: method,
+                                /*method: method,*/
                             })),
                             credentials: 'include',
                             headers    : {
