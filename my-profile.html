@@ -131,14 +131,14 @@
                 }
 
                 #webview_data {
-                    font-size: 24px;
+                    font-size: 14px;
                     color: white;
                 }
 
                 #btn_status {
                     font-size: 24px;
-                    color: white;
-                    padding: 30;
+                    color: red;
+                    padding: 10;
                 }
 
                 .loading-text {
@@ -387,6 +387,14 @@
                         document.getElementById('webview_data').innerHTML = JSON.stringify(DemoApp.initDataUnsafe, null, 2);
                     }
                 };
+            </script>
+
+            <script>
+            window.onload = function() {
+                DemoApp.init();
+                DemoApp.checkInitData();
+                document.getElementById('webview_data').innerHTML = JSON.stringify(DemoApp.initDataUnsafe, null, 2);
+            };
             </script>
 
             <script type="application/javascript">
