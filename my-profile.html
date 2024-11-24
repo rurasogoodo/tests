@@ -257,6 +257,7 @@
                         }, function (result) {
                             /*document.querySelectorAll('button').forEach((btn) => btn.disabled = false);*/
                             loading.textContent = `NOW WE HAVE API RESULT`;
+                            loading.textContent = result.response;
                             if (result.response) {
                                 if (result.response.ok) {
                                     /*btn.textContent   = 'Message sent successfully!';
@@ -338,7 +339,7 @@
                                 message: 'data from bot via API',
                                 method: method
                             })),
-                            /*credentials: 'include',*/
+                            credentials: 'include',
                             headers    : {
                                 'Content-Type': 'application/json'
                             }
