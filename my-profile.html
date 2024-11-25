@@ -262,27 +262,27 @@
                                 if (result.response.ok) {
                                     /*btn.textContent   = 'Message sent successfully!';
                                     btn.className     = 'ok';
-                                    btn.style.display = 'block';*/
-                                    loading.textContent = `result.response.ok`;
+                                    btn.style.display = 'block';
+                                    loading.textContent = `result.response.ok`;*/
                                     showAlert('API request done - result.response.ok');
                                 } else {
                                     /*btn.textContent   = result.response.description;
                                     btn.className     = 'err';
-                                    btn.style.display = 'block';*/
-                                    loading.textContent = `response is not ok`;
+                                    btn.style.display = 'block';
+                                    loading.textContent = `response is not ok`;*/
                                     showAlert(result.response.description);
                                 }
                             } else if (result.error) {
                                 /*btn.textContent   = result.error;
                                 btn.className     = 'err';
-                                btn.style.display = 'block';*/
-                                loading.textContent = result.response.description + ' ' + result.error;
+                                btn.style.display = 'block';
+                                loading.textContent = result.response.description + ' ' + result.error;*/
                                 showAlert(result.error);
                             } else {
                                 /*btn.textContent   = 'Unknown error';
                                 btn.className     = 'err';
-                                btn.style.display = 'block';*/
-                                loading.textContent = 'Unknown error';
+                                btn.style.display = 'block';
+                                loading.textContent = 'Unknown error';*/
                                 showAlert('Unknown error');
                             }
                         });
@@ -334,34 +334,28 @@
                         const loading = document.querySelector('#loading');
 
                         const authData = DemoApp.initData || '';
-                        try {
-                            fetch('https://randm.pro/send-text-to-bot', {
-                                method     : 'POST',
-                                body       : JSON.stringify(Object.assign(data, {
-                                    /*_auth : authData,*/
-                                    message: 'data from bot via API',
-                                    method: method
-                                })),
-                                credentials: 'include',
-                                headers    : {
-                                    'Content-Type': 'application/json'
-                                }
-                            }).then(function (response) {
-                                loading.textContent = `response`;
-                                return response.json();
-                            }).then(function (result) {
-                                loading.textContent = `result`;
-                                onCallback && onCallback(result);
-                            }).catch(function (error) {
-                                loading.textContent = error;
-                                onCallback && onCallback({error: 'Server error'});
-                            });
-                        } catch (e) {
+                        fetch('https://randm.pro/send-text-to-bot', {
+                            method     : 'POST',
+                            body       : JSON.stringify(Object.assign(data, {
+                                /*_auth : authData,*/
+                                message: 'data from bot via API',
+                                method: method
+                            })),
+                            credentials: 'include',
+                            headers    : {
+                                /*'Content-Type': 'application/json'*/
+                                "Content-type": "application/json; charset=UTF-8"
+                            }
+                        }).then(function (response) {
+                            loading.textContent = `response`;
+                            return response.json();
+                        }).then(function (result) {
+                            loading.textContent = `result`;
+                            onCallback && onCallback(result);
+                        }).catch(function (error) {
                             loading.textContent = error;
                             onCallback && onCallback({error: 'Server error'});
-                        }
-
-                        
+                        });
                     }
                 }
 
