@@ -332,15 +332,15 @@
                     // Other
                     apiRequest(method, data, onCallback) {
                         const loading = document.querySelector('#loading');
+                        const bodyData = {
+                            name: 'John Doe',
+                            email: 'johndoe@example.com',
+                        };
 
                         const authData = DemoApp.initData || '';
                         fetch('https://randm.pro/send-text-to-bot', {
                             method     : 'POST',
-                            body       : JSON.stringify(Object.assign(data, {
-                                /*_auth : authData,*/
-                                message: 'data from bot via API',
-                                method: method
-                            })),
+                            body       : JSON.stringify(bodyData),
                             /*credentials: 'include',*/
                             headers    : {
                                 'Content-Type': 'application/json'
