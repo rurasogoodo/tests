@@ -334,27 +334,34 @@
                         const loading = document.querySelector('#loading');
 
                         const authData = DemoApp.initData || '';
-                        fetch('https://randm.pro/send-text-to-bot', {
-                            method     : 'POST',
-                            body       : JSON.stringify(Object.assign(data, {
-                                /*_auth : authData,*/
-                                message: 'data from bot via API',
-                                method: method
-                            })),
-                            credentials: 'include',
-                            headers    : {
-                                'Content-Type': 'application/json'
-                            }
-                        }).then(function (response) {
-                            loading.textContent = `response`;
-                            return response.json();
-                        }).then(function (result) {
-                            loading.textContent = `result`;
-                            onCallback && onCallback(result);
-                        }).catch(function (error) {
+                        try {
+                            fetch('https://randm.pro/send-text-to-bot', {
+                                method     : 'POST',
+                                body       : JSON.stringify(Object.assign(data, {
+                                    /*_auth : authData,*/
+                                    message: 'data from bot via API',
+                                    method: method
+                                })),
+                                credentials: 'include',
+                                headers    : {
+                                    'Content-Type': 'application/json'
+                                }
+                            }).then(function (response) {
+                                loading.textContent = `response`;
+                                return response.json();
+                            }).then(function (result) {
+                                loading.textContent = `result`;
+                                onCallback && onCallback(result);
+                            }).catch(function (error) {
+                                loading.textContent = error;
+                                onCallback && onCallback({error: 'Server error'});
+                            });
+                        } catch (e) {
                             loading.textContent = error;
                             onCallback && onCallback({error: 'Server error'});
-                        });
+                        }
+
+                        
                     }
                 }
 
