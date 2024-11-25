@@ -341,10 +341,9 @@
                                 message: 'data from bot via API',
                                 method: method
                             })),
-                            credentials: 'include',
+                            /*credentials: 'include',*/
                             headers    : {
-                                /*'Content-Type': 'application/json'*/
-                                "Content-type": "application/json; charset=UTF-8"
+                                'Content-Type': 'application/json'
                             }
                         }).then(function (response) {
                             loading.textContent = `response`;
