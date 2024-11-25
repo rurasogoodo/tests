@@ -352,7 +352,7 @@
                             loading.textContent = `result`;
                             onCallback && onCallback(result);
                         }).catch(function (error) {
-                            loading.textContent = `error`;
+                            loading.textContent = error;
                             onCallback && onCallback({error: 'Server error'});
                         });
                     }
