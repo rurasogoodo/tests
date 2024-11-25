@@ -342,6 +342,8 @@
                             method     : 'POST',
                             body       : JSON.stringify(bodyData),
                             /*credentials: 'include',*/
+                            cache: 'no-cache',
+                            credentials: 'same-origin',
                             headers    : {
                                 'Content-Type': 'application/json'
                             }
