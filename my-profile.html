@@ -264,26 +264,26 @@
                                     btn.className     = 'ok';
                                     btn.style.display = 'block';
                                     loading.textContent = `result.response.ok`;*/
-                                    showAlert('API request done - result.response.ok');
+                                    alert('API request done - result.response.ok');
                                 } else {
                                     /*btn.textContent   = result.response.description;
                                     btn.className     = 'err';
                                     btn.style.display = 'block';
                                     loading.textContent = `response is not ok`;*/
-                                    showAlert(result.response.description);
+                                    alert(result.response.description);
                                 }
                             } else if (result.error) {
                                 /*btn.textContent   = result.error;
                                 btn.className     = 'err';
                                 btn.style.display = 'block';
                                 loading.textContent = result.response.description + ' ' + result.error;*/
-                                showAlert(result.error);
+                                alert(result.error);
                             } else {
                                 /*btn.textContent   = 'Unknown error';
                                 btn.className     = 'err';
                                 btn.style.display = 'block';
                                 loading.textContent = 'Unknown error';*/
-                                showAlert('Unknown error');
+                                alert('Unknown error');
                             }
                         });
                     },
