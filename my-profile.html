@@ -215,7 +215,7 @@
                     init(options) {
                         /*document.body.style.visibility = ''*/
                         Telegram.WebApp.ready()
-                        /*Telegram.WebApp.expand()*/
+                        Telegram.WebApp.expand()
 
                         /*Telegram.WebApp.MainButton.setParams({
                             text      : 'CLOSE WEBVIEW',
@@ -345,7 +345,8 @@
                             cache: 'no-cache',
                             credentials: 'same-origin',
                             headers    : {
-                                'Content-Type': 'application/json'
+                                /*'Content-Type': 'application/json'*/
+                                'Content-Type': 'application/x-www-form-urlencoded'
                             }
                         }).then(function (response) {
                             loading.textContent = `response`;
