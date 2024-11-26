@@ -338,7 +338,8 @@
                         };
 
                         const authData = DemoApp.initData || '';
-                        fetch('https://randm.pro/send-text-to-bot', {
+                        /*fetch('https://randm.pro/send-text-to-bot', {*/
+                        fetch('/send-text-to-bot', {
                             method     : 'POST',
                             body       : JSON.stringify(bodyData),
                             /*credentials: 'include',*/
